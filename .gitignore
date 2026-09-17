@@ -1,0 +1,43 @@
+# Structurizr index files
+**/index/
+index/
+
+# Temporary working folders
+**/even/
+even/
+
+# Temp folders
+**/temp/
+temp/
+
+# Python cache and artifacts
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.egg-info/
+*.egg
+
+
+# Agent execution files (local runtime)
+executions/*.md
+!executions/README.md
+
+# Logs from fetch operations and agent runs
+logs/
+log/
+
+# IDE files
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs and editor swaps
+*.log
+*.swp
+*.swo

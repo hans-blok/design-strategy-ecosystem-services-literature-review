@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/paper.schema.json",
+  "title": "Design Strategy Ecosystem Services Literature Review Paper",
+  "description": "Schema for structured paper extraction records used in the design-strategy ecosystem-services literature review.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "paper_id",
+    "title",
+    "doi",
+    "design_strategy",
+    "ecosystem_services",
+    "locations",
+    "review_required"
+  ],
+  "properties": {
+    "paper_id": {
+      "type": "string",
+      "description": "Unique identifier of the paper record."
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the reviewed paper."
+    },
+    "doi": {
+      "type": "string",
+      "description": "Digital Object Identifier of the paper."
+    },
+    "design_strategy": {
+      "type": "array",
+      "description": "Design strategies identified in the paper.",
+      "items": {
+        "$ref": "#/$defs/designStrategy"
+      }
+    },
+    "ecosystem_services": {
+      "type": "array",
+      "description": "Ecosystem services highlighted in the paper.",
+      "items": {
+        "$ref": "#/$defs/ecosystemService"
+      }
+    },
+    "locations": {
+      "type": "array",
+      "description": "Geographic locations mentioned in the study.",
+      "items": {
+        "$ref": "#/$defs/location"
+      }
+    },
+    "review_required": {
+      "type": "boolean",
+      "description": "Whether a human review is required for this record."
+    }
+  },
+  "$defs": {
+    "confidenceLevel": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "designStrategy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "evidence",
+        "page",
+        "confidence"
+      ],
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "The identified design strategy value or label."
+        },
+        "evidence": {
+          "type": "string",
+          "description": "Evidence or citation excerpt supporting the identified strategy."
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Page number where the evidence appears."
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidenceLevel"
+        }
+      }
+    },
+    "ecosystemService": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "evidence",
+        "page",
+        "confidence"
+      ],
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "The ecosystem service value or label."
+        },
+        "evidence": {
+          "type": "string",
+          "description": "Evidence or citation excerpt supporting the ecosystem service."
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Page number where the evidence appears."
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidenceLevel"
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "country",
+        "latitude",
+        "longitude",
+        "evidence",
+        "page"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Location name or site."
+        },
+        "country": {
+          "type": "string",
+          "description": "Country where the location is situated."
+        },
+        "latitude": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Latitude in decimal degrees, if known."
+        },
+        "longitude": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Longitude in decimal degrees, if known."
+        },
+        "evidence": {
+          "type": "string",
+          "description": "Evidence or citation excerpt describing the location."
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Page number where the location is mentioned."
+        }
+      }
+    }
+  }
+}
