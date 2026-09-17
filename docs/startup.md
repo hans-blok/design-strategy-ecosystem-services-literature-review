@@ -61,6 +61,35 @@ een eigen map, `.claude/commands/`.
 Dus: gebeurt er niets als je `/` typt, dan zit je waarschijnlijk in het verkeerde venster. Dat
 is de meest gemaakte beginnersfout en het kost mensen makkelijk een half uur.
 
+### Gemini werkt niet met dezelfde map
+
+Als je met **Gemini in VS Code** werkt, dan werkt dat niet automatisch via `.github/agents/` of
+`.github/prompts/`. Gemini heeft een eigen prompt-omgeving en leest die Copilot-bestanden niet.
+
+Dat betekent:
+
+- Copilot in VS Code: de agent- en promptbestanden in deze repo worden herkend;
+- Gemini in VS Code: je gebruikt een eigen saved prompt, custom instruction of project prompt;
+- GitHub.com: geen support voor deze promptbestanden;
+- Claude Code: gebruikt `.claude/commands/`, niet deze map.
+
+Voor herhaalbare werkstromen met Gemini is het dus belangrijk om een **saved prompt** of
+**custom instruction** aan te maken die dezelfde instructies bevat als de Copilot-agent. Je
+kunt de repo-bestanden wel gebruiken als referentie, maar je roept ze niet aan via `/` in de
+Gemini-chat.
+
+Een goede Gemini-werkflow is:
+
+1. Open de Gemini-chat in VS Code.
+2. Maak een saved prompt of project prompt met een vaste opdracht.
+3. Voeg projectcontext toe: doel, schema, outputvereisten en regels.
+4. Gebruik het voorbeeldbestand `temp/example-json.json` en het schema in
+   `schemas/paper.schema.json` als referentie.
+5. Sla de prompt op zodat je hem steeds opnieuw kunt gebruiken.
+
+Een losse prompt in de chat is handig om snel iets uit te proberen, maar niet herhaalbaar. Voor
+structuur en consistentie is een saved prompt of een vaste project-instructie beter.
+
 ---
 
 ## 3. Wat je kunt voorbereiden

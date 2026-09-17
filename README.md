@@ -83,13 +83,34 @@ what its answer should look like, which makes it a fair test of whether the desi
 
 ## Documentation site
 
-Project documentation is published with MkDocs Material:
+**https://hans-blok.github.io/design-strategy-ecosystem-services-literature-review/**
+
+Built with MkDocs Material from the `docs/` folder. Only what is in `docs/` is published —
+this README and anything else in the repository root stay out of the site.
+
+Preview locally:
 
 ```bash
 pip install -r requirements-docs.txt
-mkdocs serve      # local preview at http://127.0.0.1:8000
-mkdocs build      # static site into site/
+mkdocs serve      # http://127.0.0.1:8000
 ```
+
+Publish:
+
+```bash
+mkdocs gh-deploy
+```
+
+That builds the site and pushes the result to the `gh-pages` branch, which GitHub Pages
+serves. It is a separate, deliberate step: pushing to `main` does not update the site.
+
+**One-time setup** (Settings → Pages → Build and deployment): Source is
+**Deploy from a branch**, branch `gh-pages`, folder `/ (root)`. The branch appears after the
+first `mkdocs gh-deploy`.
+
+**Adding a page:** put the `.md` file in `docs/`, add a line under `nav:` in `mkdocs.yml`,
+then run `mkdocs gh-deploy`. Links from a `docs/` page to a file outside `docs/` must be
+full GitHub URLs — relative links break the build under `--strict`.
 
 ---
 

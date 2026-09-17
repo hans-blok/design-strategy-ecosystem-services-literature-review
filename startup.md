@@ -61,13 +61,42 @@ een eigen map, `.claude/commands/`.
 Dus: gebeurt er niets als je `/` typt, dan zit je waarschijnlijk in het verkeerde venster. Dat
 is de meest gemaakte beginnersfout en het kost mensen makkelijk een half uur.
 
+### Gemini werkt niet met dezelfde map
+
+Als je met **Gemini in VS Code** werkt, dan werkt dat niet automatisch via `.github/agents/` of
+`.github/prompts/`. Gemini heeft een eigen prompt-omgeving en leest die Copilot-bestanden niet.
+
+Dat betekent:
+
+- Copilot in VS Code: de agent- en promptbestanden in deze repo worden herkend;
+- Gemini in VS Code: je gebruikt een eigen saved prompt, custom instruction of project prompt;
+- GitHub.com: geen support voor deze promptbestanden;
+- Claude Code: gebruikt `.claude/commands/`, niet deze map.
+
+Voor herhaalbare werkstromen met Gemini is het dus belangrijk om een **saved prompt** of
+**custom instruction** aan te maken die dezelfde instructies bevat als de Copilot-agent. Je
+kunt de repo-bestanden wel gebruiken als referentie, maar je roept ze niet aan via `/` in de
+Gemini-chat.
+
+Een goede Gemini-werkflow is:
+
+1. Open de Gemini-chat in VS Code.
+2. Maak een saved prompt of project prompt met een vaste opdracht.
+3. Voeg projectcontext toe: doel, schema, outputvereisten en regels.
+4. Gebruik het voorbeeldbestand `temp/example-json.json` en het schema in
+   `schemas/paper.schema.json` als referentie.
+5. Sla de prompt op zodat je hem steeds opnieuw kunt gebruiken.
+
+Een losse prompt in de chat is handig om snel iets uit te proberen, maar niet herhaalbaar. Voor
+structuur en consistentie is een saved prompt of een vaste project-instructie beter.
+
 ---
 
 ## 3. Wat je kunt voorbereiden
 
 ### Lees het sjabloon
 
-Lees eerst [`templates/agent.template.md`](templates/agent.template.md) van boven naar
+Lees eerst [`templates/agent.template.md`](https://github.com/hans-blok/design-strategy-ecosystem-services-literature-review/blob/main/templates/agent.template.md) van boven naar
 beneden. Eén keer, rustig, zonder iets in te vullen.
 
 Dat sjabloon is de kern van deze workspace. Het stelt in vaste volgorde de vragen die samen
@@ -96,7 +125,7 @@ Twee secties lichten we eruit, omdat ze het minst vanzelfsprekend zijn:
 
 ### Kijk waar het schema staat
 
-Open [`schemas/paper.schema.json`](schemas/paper.schema.json). Dat bestand beschrijft hoe een
+Open [`schemas/paper.schema.json`](https://github.com/hans-blok/design-strategy-ecosystem-services-literature-review/blob/main/schemas/paper.schema.json). Dat bestand beschrijft hoe een
 ingevuld artikel-record eruit moet zien: welke velden verplicht zijn, dat elk citaat een
 paginanummer nodig heeft, en dat `confidence` alleen `low`, `medium` of `high` mag zijn.
 
@@ -122,7 +151,7 @@ Typ `/` en kies `agent-designer.design-agent`.
 
 ### Stap 2 — Beschrijf wat je wilt
 
-Gebruik het invulformulier uit de [README](README.md). Vul in wat je weet en laat de rest
+Gebruik het invulformulier uit de [README](https://github.com/hans-blok/design-strategy-ecosystem-services-literature-review/blob/main/README.md). Vul in wat je weet en laat de rest
 leeg:
 
 ```text
