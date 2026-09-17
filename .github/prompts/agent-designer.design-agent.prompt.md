@@ -1,6 +1,6 @@
 ---
 description: "Design a GitHub Agent or prompt file from a rough idea, with the choices explained."
-agent: "prompt-designer"
+agent: "agent-designer"
 ---
 
-Invoke [`prompt-designer`](../agents/prompt-designer.agent.md).
+Invoke [`agent-designer`](../agents/agent-designer.agent.md).

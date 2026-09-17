@@ -41,3 +41,6 @@ Desktop.ini
 *.log
 *.swp
 *.swo
+
+# MkDocs build output
+site/

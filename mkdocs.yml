@@ -1,26 +1,26 @@
 # ============================================================
-# MkDocs Configuration — Entoli Canon Documentation
-# Owner: Publication Steward
-# Purpose: Publication of strategic documentation
+# MkDocs configuration
+# Only the contents of docs/ are published. Files in the
+# repository root (README.md, startup.md, ...) are NOT part of
+# the site — add a page to docs/ and to the nav below instead.
 # ============================================================
 
 # ------------------------------------------------------------
-# 1. Site Identity
+# 1. Site identity
 # ------------------------------------------------------------
-site_name: "Entoli Startup"
-site_description: "Strategic documentation for Product Entoli - Agent ecosystem for explicit, governable and traceable software development"
-site_author: "Entoli Team"
-site_url: "https://hans-blok.github.io/entoli-canon/"
+site_name: "Design Strategy & Ecosystem Services — Literature Review"
+site_description: "Structured extraction workflow for a literature review of ~120 scientific papers"
+site_author: "hans-blok"
+site_url: "https://hans-blok.github.io/design-strategy-ecosystem-services-literature-review/"
 
 # ------------------------------------------------------------
-# 2. Documentation Source
+# 2. Documentation source
 # ------------------------------------------------------------
 docs_dir: "docs"
 site_dir: "site"
 
 # ------------------------------------------------------------
-# 3. Theme & Presentation
-# Entoli house style with Material theme
+# 3. Theme
 # ------------------------------------------------------------
 theme:
   name: "material"
@@ -28,47 +28,43 @@ theme:
   features:
     - navigation.instant
     - navigation.sections
-    - navigation.expand
     - navigation.top
-    - navigation.tabs
-    - navigation.tabs.sticky
     - content.code.copy
-    - content.code.annotate
-    - toc.integrate
     - search.suggest
     - search.highlight
+    - toc.integrate
+  # Kleuren komen uit docs/stylesheets/literature-review.css, niet uit een
+  # Material-palet. Daarom staan hier alleen de licht/donker-schema's.
   palette:
-    # Overridden by custom CSS (Entoli orange #e55039)
-    primary: "deep-orange"
-    accent: "orange"
-  font:
-    text: "Segoe UI"
-    code: "Consolas"
-  logo: "assets/entoli-logo-m.png"
-  favicon: "assets/entoli-logo-m.png"
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
 
 # ------------------------------------------------------------
-# 4. Custom Styling - Entoli Stylesheet
-# Owner: Presentation Architect
+# 3b. Eigen stijl
+# Elk stylesheet dat de site moet gebruiken, staat hier. Een .css-bestand
+# in docs/stylesheets/ dat niet in deze lijst staat, wordt wel meegekopieerd
+# maar nooit ingeladen.
 # ------------------------------------------------------------
 extra_css:
-  - style/entoli.css
-
-extra_javascript: []
+  - stylesheets/literature-review.css
 
 # ------------------------------------------------------------
-# 5. Plugins
+# 4. Plugins
 # ------------------------------------------------------------
 plugins:
   - search:
       lang: en
 
 # ------------------------------------------------------------
-# 6. Markdown Extensions
+# 5. Markdown extensions
 # ------------------------------------------------------------
 markdown_extensions:
-  # Python Markdown
-  - abbr
   - admonition
   - attr_list
   - def_list
@@ -78,57 +74,34 @@ markdown_extensions:
   - toc:
       permalink: true
       toc_depth: 3
-
-  # Python Markdown Extensions
-  - pymdownx.arithmatex:
-      generic: true
   - pymdownx.betterem:
       smart_enable: all
-  - pymdownx.caret
   - pymdownx.details
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
-  - pymdownx.keys
-  - pymdownx.mark
-  - pymdownx.smartsymbols
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.tilde
 
 # ------------------------------------------------------------
-# 7. Navigation Structure
-# Primary responsibility: Publication Steward
+# 6. Navigation
+# Every published page is listed here. A .md file in docs/ that
+# is not listed still gets built; keep this list complete so the
+# site structure stays deliberate.
 # ------------------------------------------------------------
 nav:
   - Home: index.md
-
+  - Startup: startup.md
 
 # ------------------------------------------------------------
-# 8. Extra Configuration
+# 7. Extra
 # ------------------------------------------------------------
 extra:
-  social: []
-  generator: false  # Hide "Made with Material for MkDocs"
+  generator: false
 
-# ------------------------------------------------------------
-# 9. Copyright
-# ------------------------------------------------------------
-copyright: "Copyright &copy; 2026 Maxia Consultancy. All rights reserved."
-
-# ------------------------------------------------------------
-# Metadata
-# ------------------------------------------------------------
-# Generated by: Publication Steward
-# Template: publication-steward.mkdocs.template.md
-# Stylesheet: docs/styles/entoli.css (Presentation Architect)
-# Date: 2026-02-06
-# Version: 1.0
+copyright: "Copyright &copy; 2026"

@@ -33,6 +33,54 @@ early is far cheaper than recoding 120 papers late.
 
 ---
 
+## Creating an agent for this workspace
+
+Repetitive review work — validating records, checking a batch of extractions, summarising
+what is still flagged — is worth handing to an agent. The `agent-designer` in
+`.github/agents/` builds one for you, from templates in `templates/`.
+
+**Where to run it.** Prompt files in `.github/prompts/` are read by Copilot Chat in VS Code,
+Visual Studio and JetBrains. Open Copilot Chat and type `/agent-designer.design-agent`.
+Claude Code does not read that folder; it needs its own file in `.claude/commands/`.
+
+**What to have ready.** Fill in this form and paste it into the chat. Answer what you know;
+leave the rest blank and the designer will ask or make a reasoned assumption.
+
+```text
+Goal (one sentence):
+  [What should this do for me?]
+
+Responsibility:
+  [The one job. If you need "and" twice, it is probably two agents.]
+
+Input:
+  [What it receives — a file, a folder, a question — and where that comes from.]
+  [What must be present before it can start.]
+
+Output:
+  [What comes out: a new file, an edited file, a list in chat.]
+  [What it should look like — one example line is enough.]
+
+Needs access to:
+  [Files, folders or schemas it must read, e.g. schemas/paper.schema.json]
+
+Must not:
+  [Anything it should leave alone — e.g. never modify files in papers/]
+```
+
+The two answers that actually block progress are the goal and the output. "Something with my
+papers" is not enough to start from; "list every record that is still flagged for review" is.
+
+**What you get back.** An `.agent.md` file in `.github/agents/`, optionally a `.prompt.md`
+shortcut in `.github/prompts/`, and an explanation of the choices that were not obvious.
+Read that explanation — the second agent is much easier to design than the first.
+
+A good first one: an agent that checks the records in `papers/` against
+`schemas/paper.schema.json` and reports which are incomplete or flagged. You already know
+what its answer should look like, which makes it a fair test of whether the design is right.
+
+---
+
 ## Documentation site
 
 Project documentation is published with MkDocs Material:

@@ -1,0 +1,57 @@
+/* ============================================================
+   Literature review — sitestijl
+   Gekoppeld via extra_css in mkdocs.yml. Geldt voor de hele site.
+   ============================================================ */
+
+:root {
+  --lr-ink: #121212;
+  --lr-accent: #FB9B34;
+
+  --md-primary-fg-color: var(--lr-ink);
+  --md-primary-fg-color--light: #3a3a3a;
+  --md-primary-fg-color--dark: #000000;
+  --md-accent-fg-color: var(--lr-accent);
+}
+
+.md-header,
+.md-tabs {
+  background-color: var(--lr-ink);
+}
+
+/* Geen beeldmerk geconfigureerd (theme.logo ontbreekt); Material toont dan
+   een standaard fallback-icoon in de header. De naam van de site doet hier
+   het werk, dus het icoon gaat weg. */
+.md-header__button.md-logo,
+.md-nav__button.md-logo {
+  display: none;
+}
+
+/* Figuren: tekeningen centreren, en de cursieve regel direct onder een
+   afbeelding als bijschrift behandelen. Zo krijgt een auteur figuur-met-
+   bijschrift uit gewone Markdown, zonder extra syntax. */
+.md-typeset p > img {
+  display: block;
+  margin: 1.5em auto;
+  border-radius: 4px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
+}
+
+.md-typeset p:has(> img) + p > em:only-child {
+  display: block;
+  text-align: center;
+  margin-top: -0.75em;
+  font-size: 0.85em;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Tabellen dragen hier de inhoud (input, concepts, rules), dus ze mogen
+   wat rustiger ogen dan de standaard: geen zware randen, wel lucht. */
+.md-typeset table:not([class]) th {
+  background-color: var(--md-default-fg-color--lightest);
+  font-weight: 600;
+}
+
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th {
+  padding: 0.6em 0.9em;
+}
